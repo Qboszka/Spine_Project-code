@@ -19,7 +19,7 @@ for i in train:
 
 sns.set_style('darkgrid')
 sns.countplot(l)
-#plt.show()
+
 
 plt.figure(figsize = (5,5))
 plt.imshow(train[1][0])

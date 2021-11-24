@@ -2,8 +2,8 @@
 import os, shutil, sys, random
 import numpy as np
 
-#root_dir = 'C:\\Workspace_studies\\Project_main\\Input\\' # data root path
-root_dir = '/Users/Qboszka/coding/Spine_Project/Input/'
+root_dir = 'C:\\Workspace_studies\\Project_main\\Input\\' # data root path
+#root_dir = '/Users/Qboszka/coding/Spine_Project/Input/'
 classes_dir = ['female', 'male'] #total labels
 
 val_ratio = 0.10

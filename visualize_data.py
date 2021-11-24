@@ -1,3 +1,4 @@
+import os
 from load_data import get_data
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -6,45 +7,53 @@ labels = ['female', 'male']
 img_size = 224
 
 #fetch data
-
-train = get_data('C:\\Workspace_studies\\Project_main\\Input\\train')
-val = get_data('C:\\Workspace_studies\\Project_main\\Input\\val')
-test = get_data('C:\\Workspace_studies\\Project_main\\Input\\test')
+train_data = get_data('C:\\Workspace_studies\\Project_main\\Input\\train')
+val_data = get_data('C:\\Workspace_studies\\Project_main\\Input\\val')
+test_data = get_data('C:\\Workspace_studies\\Project_main\\Input\\test')
 
 #train = get_data('/Users/Qboszka/coding/Spine_Project/Input/train')
 #val = get_data('/Users/Qboszka/coding/Spine_Project/Input/val')
 #test = get_data('/Users/Qboszka/coding/Spine_Project/Input/test')
 
-tr = []
-for i in train:
+train = []
+for i in train_data:
     if(i[1] == 0):
-        tr.append("female")
+        train.append("female")
     else:
-        tr.append("male")
+        train.append("male")
         
-v = []
-for i in val:
+val = []
+for i in val_data:
     if(i[1] == 0):
-        v.append("female")
+        val.append("female")
     else:
-        v.append("male")
+        val.append("male")
 
-t = []
-for i in test:
+test = []
+for i in test_data:
     if(i[1] == 0):
-        t.append("female")
+        test.append("female")
     else:
-        t.append("male")
+        test.append("male")
 
 #visualize data in loop
-plots = [tr, v, t]
+plots = [train, val, test]
+names = ["train_set", "validation_set", "test_set"]
 
+num = 0
 for plot in plots:
     sns.set_style('darkgrid')
     sns.countplot(plot)
+    plt.title(names[num])
     plt.show()
+    num += 1
     
-plt.figure(figsize = (5,5))
-plt.imshow(train[1][0])
-plt.title(labels[train[0][1]])
+plt.figure(figsize = (5, 5))
+plt.imshow(train_data[1][0])
+plt.title(labels[train_data[0][1]])
+plt.show()
+
+plt.figure(figsize = (5, 5))
+plt.imshow(train_data[-1][0])
+plt.title(labels[train_data[-1][1]])
 plt.show()

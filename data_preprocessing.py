@@ -3,7 +3,6 @@ from keras.preprocessing.image import ImageDataGenerator
 import os
 import numpy as np
 
-
 #params
 img_size = 224
 
@@ -50,7 +49,7 @@ y_val = np.array(y_val)
 x_test.reshape(-1, img_size, img_size, 1)
 y_test = np.array(y_val)
 
-
+#DataGenerator with augmentation
 datagen = ImageDataGenerator(
         featurewise_center = False,  # set input mean to 0 over the dataset
         samplewise_center = False,  # set each sample mean to 0

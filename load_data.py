@@ -9,6 +9,7 @@ def get_data(data_dir):
     for label in labels:
         path = os.path.join(data_dir, label)
         class_num = labels.index(label)
+
         for img in os.listdir(path):
             try:
                 img_arr = cv2.imread(os.path.join(path, img))[...,::-1] #convert BGR to RGB format

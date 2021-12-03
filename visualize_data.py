@@ -6,11 +6,12 @@ import matplotlib.pyplot as plt
 labels = ['female', 'male']
 img_size = 224
 
-#fetch data
+#fetch Windows
 train_data = get_data('C:\\Workspace_studies\\Project_main\\Input\\train')
 val_data = get_data('C:\\Workspace_studies\\Project_main\\Input\\val')
 test_data = get_data('C:\\Workspace_studies\\Project_main\\Input\\test')
 
+#fetch MacOS
 #train = get_data('/Users/Qboszka/coding/Spine_Project/Input/train')
 #val = get_data('/Users/Qboszka/coding/Spine_Project/Input/val')
 #test = get_data('/Users/Qboszka/coding/Spine_Project/Input/test')

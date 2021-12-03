@@ -62,6 +62,6 @@ datagen = ImageDataGenerator(
         height_shift_range = 0.1,  # randomly shift images vertically (fraction of total height)
         horizontal_flip = True,  # randomly flip images
         vertical_flip = True)  # randomly flip images
-
-
+  
 datagen.fit(x_train)
+

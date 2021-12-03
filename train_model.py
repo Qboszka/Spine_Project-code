@@ -8,17 +8,45 @@ from tensorflow.keras.optimizers import Adam
 import matplotlib.pyplot as plt
 from data_preprocessing import x_train, y_train, x_val, y_val, x_test, y_test
 
+#compile
 opt = Adam(learning_rate = 0.000001)
 model.compile(optimizer = opt, loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits = True) , metrics = ['accuracy'])
 
-history = model.fit(x_train, y_train, epochs = 5, validation_data = (x_val, y_val))
+#checkpoint
+checkpoint_filepath = "C:\Workspace_studies\Project_main\Checkpoints\model.{epoch:02d}-{val_accuracy:.2f}.hdf5"
+model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
+    filepath = checkpoint_filepath,
+    save_weights_only = False,
+    monitor = 'val_accuracy',
+    mode = 'max',
+    save_best_only = True)
+
+# 629 train images
+# 79 val images
+# 80 test images
+
+#trainig params
+batch_size = 32
+steps_per_epoch = len(x_train) / batch_size
+validation_steps = len(x_val) / batch_size
+
+history = model.fit(x_train, y_train, 
+                    epochs = 10,
+                    batch_size = batch_size,
+                    steps_per_epoch = steps_per_epoch, 
+                    validation_data = (x_val, y_val),
+                    validation_steps = validation_steps,  
+                    callbacks = model_checkpoint_callback,
+                    shuffle = True)
+
+model.save("epochs_500_lr_0.000001_opt_Adam_size_224.h5")
 
 acc = history.history['accuracy']
 val_acc = history.history['val_accuracy']
 loss = history.history['loss']
 val_loss = history.history['val_loss']
 
-epochs_range = range(500)
+epochs_range = range(10)
 
 plt.figure(figsize = (15, 15))
 plt.subplot(2, 2, 1)

@@ -65,13 +65,5 @@ datagen = ImageDataGenerator(
 
 datagen.fit(x_train)
 
-print(len(x_test))
-print(len(y_test))
-
-print(len(x_val))
-print(len(y_val))
-
-print(len(x_train))
-print(len(y_train))
 
 

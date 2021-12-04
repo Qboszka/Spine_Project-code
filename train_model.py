@@ -6,7 +6,7 @@ from keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.optimizers import Adam
 
 import matplotlib.pyplot as plt
-from data_preprocessing import x_train, y_train, x_val, y_val, x_test, y_test
+from data_preprocessing import x_train, y_train, x_val, y_val
 
 #compile
 opt = Adam(learning_rate = 0.000001)
@@ -31,7 +31,7 @@ steps_per_epoch = len(x_train) / batch_size
 validation_steps = len(x_val) / batch_size
 
 history = model.fit(x_train, y_train, 
-                    epochs = 10,
+                    epochs = 500,
                     batch_size = batch_size,
                     steps_per_epoch = steps_per_epoch, 
                     validation_data = (x_val, y_val),
@@ -46,7 +46,7 @@ val_acc = history.history['val_accuracy']
 loss = history.history['loss']
 val_loss = history.history['val_loss']
 
-epochs_range = range(10)
+epochs_range = range(500)
 
 plt.figure(figsize = (15, 15))
 plt.subplot(2, 2, 1)

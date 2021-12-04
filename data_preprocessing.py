@@ -47,7 +47,7 @@ x_val.reshape(-1, img_size, img_size, 1)
 y_val = np.array(y_val)
 
 x_test.reshape(-1, img_size, img_size, 1)
-y_test = np.array(y_val)
+y_test = np.array(y_test)
 
 #DataGenerator with augmentation
 datagen = ImageDataGenerator(
@@ -62,6 +62,16 @@ datagen = ImageDataGenerator(
         height_shift_range = 0.1,  # randomly shift images vertically (fraction of total height)
         horizontal_flip = True,  # randomly flip images
         vertical_flip = True)  # randomly flip images
-  
+
 datagen.fit(x_train)
+
+print(len(x_test))
+print(len(y_test))
+
+print(len(x_val))
+print(len(y_val))
+
+print(len(x_train))
+print(len(y_train))
+
 

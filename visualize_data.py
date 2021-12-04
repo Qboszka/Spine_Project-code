@@ -12,9 +12,9 @@ val_data = get_data('C:\\Workspace_studies\\Project_main\\Input\\val')
 test_data = get_data('C:\\Workspace_studies\\Project_main\\Input\\test')
 
 #fetch MacOS
-#train = get_data('/Users/Qboszka/coding/Spine_Project/Input/train')
-#val = get_data('/Users/Qboszka/coding/Spine_Project/Input/val')
-#test = get_data('/Users/Qboszka/coding/Spine_Project/Input/test')
+#train_data = get_data('/Users/Qboszka/coding/Spine_Project/Input/train')
+#val_data = get_data('/Users/Qboszka/coding/Spine_Project/Input/val')
+#test_data = get_data('/Users/Qboszka/coding/Spine_Project/Input/test')
 
 train = []
 for i in train_data:
@@ -58,3 +58,7 @@ plt.figure(figsize = (5, 5))
 plt.imshow(train_data[-1][0])
 plt.title(labels[train_data[-1][1]])
 plt.show()
+
+print(len(train_data))
+print(len(val_data))
+print(len(test_data))

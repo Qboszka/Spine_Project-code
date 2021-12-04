@@ -9,12 +9,19 @@ model_filepath = "C:\Workspace_studies\Project_main\Checkpoints\model.169-0.67.h
 model = keras.models.load_model(model_filepath)
 
 # evaluate
-print("Evaluate")
-result = model.evaluate(x_test, y_test , batch_size = 79)
+print("Evaluation: ")
+print("\n")
 
-# matrix
-predict_x = model.predict(x_test)
-predictions_x = np.argmax(predict_x, axis = 1)
-print(classification_report(y_test, predictions_x, target_names = ['Famale (Class 0)','Male (Class 1)']))
+result = model.evaluate(x_test, y_test , batch_size = 79)
+y_pred = model.predict(x_test)
+#print(y_pred) # debug
+y_pred = np.argmax(y_pred, axis = 1)
+#print(y_pred) # debug
+
+# reports
+print(classification_report(y_test, y_pred, target_names = ['Famale (Class 0)','Male (Class 1)']))
+
+accuracy_score = accuracy_score(y_test, y_pred) * 100
+print("Accuracy is {}%".format(accuracy_score))
 
 

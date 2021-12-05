@@ -9,8 +9,8 @@ import matplotlib.pyplot as plt
 from data_preprocessing import x_train, y_train, x_val, y_val
 
 #compile
-opt = Adam(learning_rate = 0.01)
-model.compile(optimizer = opt, loss = tf.keras.losses.BinaryCrossentropy(from_logits = False) , metrics = ['accuracy'])
+opt = Adam(learning_rate = 0.000001)
+model.compile(optimizer = opt, loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits = True) , metrics = ['accuracy'])
 
 #checkpoints
 checkpoint_filepath = "C:\Workspace_studies\Project_main\Trainings\OwnModel_1\model.{epoch:02d}-{val_accuracy:.2f}.hdf5"
@@ -34,12 +34,12 @@ steps_per_epoch = len(x_train) / batch_size
 validation_steps = len(x_val) / batch_size
 
 history = model.fit(x_train, y_train, 
-                    epochs = 5,
+                    epochs = 40,
                     batch_size = batch_size,
                     steps_per_epoch = steps_per_epoch, 
                     validation_data = (x_val, y_val),
                     validation_steps = validation_steps,  
-                    callbacks = [model_checkpoint_callback, reduce_lr],
+                    callbacks = [model_checkpoint_callback],
                     shuffle = True)
 
 model.save("Own_epochs_500_lr_0.000001_opt_Adam_size_224.h5")
@@ -49,7 +49,7 @@ val_acc = history.history['val_accuracy']
 loss = history.history['loss']
 val_loss = history.history['val_loss']
 
-epochs_range = range(5)
+epochs_range = range(40)
 
 plt.figure(figsize = (15, 15))
 plt.subplot(2, 2, 1)

@@ -11,6 +11,11 @@ train_data = get_data('C:\\Workspace_studies\\Project_main\\Input\\train')
 val_data = get_data('C:\\Workspace_studies\\Project_main\\Input\\val')
 test_data = get_data('C:\\Workspace_studies\\Project_main\\Input\\test')
 
+#fetch unified data Windows
+#train_data = get_data('C:\\Workspace_studies\\Project_main\\Input_unified\\train')
+#val_data = get_data('C:\\Workspace_studies\\Project_main\\Input_unified\\val')
+#test_data = get_data('C:\\Workspace_studies\\Project_main\\Input_unified\\test')
+
 #fetch MacOS
 #train_data = get_data('/Users/Qboszka/coding/Spine_Project/Input/train')
 #val_data = get_data('/Users/Qboszka/coding/Spine_Project/Input/val')

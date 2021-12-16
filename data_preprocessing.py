@@ -6,10 +6,17 @@ import numpy as np
 #params
 img_size = 224
 
-#Fetch data
+#Fetch data Windows
 train_data = get_data('C:\\Workspace_studies\\Project_main\\Input\\train')
 val_data = get_data('C:\\Workspace_studies\\Project_main\\Input\\val')
 test_data = get_data('C:\\Workspace_studies\\Project_main\\Input\\test')
+
+#Fetch unified data Windows
+#train_data = get_data('C:\\Workspace_studies\\Project_main\\Input_unified\\train')
+#val_data = get_data('C:\\Workspace_studies\\Project_main\\Input_unified\\val')
+#test_data = get_data('C:\\Workspace_studies\\Project_main\\Input_unified\\test')
+
+#Fetch data MacOS
 
 #prepare train
 x_train = []
@@ -56,10 +63,10 @@ datagen = ImageDataGenerator(
         featurewise_std_normalization = False,  # divide inputs by std of the dataset
         samplewise_std_normalization = False,  # divide each input by its std
         zca_whitening = False,  # apply ZCA whitening
-        rotation_range = 30,  # randomly rotate images in the range (degrees, 0 to 180)
+        rotation_range = 40,  # randomly rotate images in the range (degrees, 0 to 180)
         zoom_range = 0.2, # Randomly zoom image 
-        width_shift_range = 0.1,  # randomly shift images horizontally (fraction of total width)
-        height_shift_range = 0.1,  # randomly shift images vertically (fraction of total height)
+        width_shift_range = 0.2,  # randomly shift images horizontally (fraction of total width)
+        height_shift_range = 0.2,  # randomly shift images vertically (fraction of total height)
         horizontal_flip = True,  # randomly flip images
         vertical_flip = True)  # randomly flip images
 

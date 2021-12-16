@@ -1,5 +1,6 @@
 
-from model import model, model_own
+from model import model
+#from model_own import model
 import tensorflow as tf
 import keras
 from keras.callbacks import ReduceLROnPlateau
@@ -11,10 +12,9 @@ from data_preprocessing import x_train, y_train, x_val, y_val
 #compile
 opt = Adam(learning_rate = 0.0001)
 model.compile(optimizer = opt, loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits = True) , metrics = ['accuracy'])
-model_own.compile(optimizer = opt, loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits = True) , metrics = ['accuracy'])
 
 #checkpoints
-checkpoint_filepath = "C:\Workspace_studies\Project_main\Trainings\OwnModel_1\model.{epoch:02d}-{val_accuracy:.2f}.hdf5"
+checkpoint_filepath = "C:\Workspace_studies\Project_main\Trainings\Model_def_interpolation\model.{epoch:02d}-{val_accuracy:.2f}.hdf5"
 model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
     filepath = checkpoint_filepath,
     save_weights_only = False,
@@ -34,7 +34,7 @@ batch_size = 32
 steps_per_epoch = len(x_train) / batch_size
 validation_steps = len(x_val) / batch_size
 
-history = model_own.fit(x_train, y_train, 
+history = model.fit(x_train, y_train, 
                     epochs = 300,
                     batch_size = batch_size,
                     steps_per_epoch = steps_per_epoch, 
@@ -43,14 +43,14 @@ history = model_own.fit(x_train, y_train,
                     callbacks = [model_checkpoint_callback, reduce_lr],
                     shuffle = False)
 
-model_own.save("model_own_epochs_300_lr_flex_opt_Adam_size_224.h5")
+model.save("model_epochs_300_lr_flex_opt_Adam_interpolation.h5")
 
 acc = history.history['accuracy']
 val_acc = history.history['val_accuracy']
 loss = history.history['loss']
 val_loss = history.history['val_loss']
 
-epochs_range = range(40)
+epochs_range = range(300)
 
 plt.figure(figsize = (15, 15))
 plt.subplot(2, 2, 1)

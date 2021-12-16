@@ -1,0 +1,3 @@
+1. Check train data path in visualise_data
+2. Check train data path in data_preprocessing
+3. Check model in train_model: import, epochs, epochs_range must fit epochs num  

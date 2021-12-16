@@ -2,7 +2,7 @@
 import os, shutil, sys, random
 import numpy as np
 
-root_dir = 'C:\\Workspace_studies\\Project_main\\Input\\' # data root path
+root_dir = 'C:\\Workspace_studies\\Project_main\\Input_unified\\' # data root path
 #root_dir = '/Users/Qboszka/coding/Spine_Project/Input/'
 classes_dir = ['female', 'male'] #total labels
 

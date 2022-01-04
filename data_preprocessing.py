@@ -4,17 +4,23 @@ import os
 import numpy as np
 
 #params
+
+#interpolation
 img_size = 224
 
+#unified
+img_width = 122
+img_height = 75
+
 #Fetch data Windows
-train_data = get_data('C:\\Workspace_studies\\Project_main\\Input\\train')
-val_data = get_data('C:\\Workspace_studies\\Project_main\\Input\\val')
-test_data = get_data('C:\\Workspace_studies\\Project_main\\Input\\test')
+#train_data = get_data('C:\\Workspace_studies\\Project_main\\Input\\train')
+#val_data = get_data('C:\\Workspace_studies\\Project_main\\Input\\val')
+#test_data = get_data('C:\\Workspace_studies\\Project_main\\Input\\test')
 
 #Fetch unified data Windows
-#train_data = get_data('C:\\Workspace_studies\\Project_main\\Input_unified\\train')
-#val_data = get_data('C:\\Workspace_studies\\Project_main\\Input_unified\\val')
-#test_data = get_data('C:\\Workspace_studies\\Project_main\\Input_unified\\test')
+train_data = get_data('C:\\Workspace_studies\\Project_main\\Input_unified\\train')
+val_data = get_data('C:\\Workspace_studies\\Project_main\\Input_unified\\val')
+test_data = get_data('C:\\Workspace_studies\\Project_main\\Input_unified\\test')
 
 #Fetch data MacOS
 
@@ -47,13 +53,13 @@ x_train = np.array(x_train) / 255
 x_val = np.array(x_val) / 255
 x_test = np.array(x_test) / 255
 
-x_train.reshape(-1, img_size, img_size, 1)
+x_train.reshape(-1, img_width, img_height, 1)
 y_train = np.array(y_train)
 
-x_val.reshape(-1, img_size, img_size, 1)
+x_val.reshape(-1, img_width, img_height, 1)
 y_val = np.array(y_val)
 
-x_test.reshape(-1, img_size, img_size, 1)
+x_test.reshape(-1, img_width, img_height, 1)
 y_test = np.array(y_test)
 
 #DataGenerator with augmentation
@@ -63,7 +69,7 @@ datagen = ImageDataGenerator(
         featurewise_std_normalization = False,  # divide inputs by std of the dataset
         samplewise_std_normalization = False,  # divide each input by its std
         zca_whitening = False,  # apply ZCA whitening
-        rotation_range = 40,  # randomly rotate images in the range (degrees, 0 to 180)
+        rotation_range = 30,  # randomly rotate images in the range (degrees, 0 to 180)
         zoom_range = 0.2, # Randomly zoom image 
         width_shift_range = 0.2,  # randomly shift images horizontally (fraction of total width)
         height_shift_range = 0.2,  # randomly shift images vertically (fraction of total height)

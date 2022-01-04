@@ -16,7 +16,7 @@ model.add(MaxPool2D())
 model.add(Dropout(0.4))
 
 model.add(Flatten())
-model.add(Dense(128,activation="relu"))
+model.add(Dense(128, activation="relu"))
 model.add(Dense(2, activation="softmax"))
 
 model.summary()

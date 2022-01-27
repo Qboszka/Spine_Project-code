@@ -5,7 +5,7 @@ from keras.models import Sequential
 
 
 model = Sequential()
-model.add(Conv2D(32,3,padding="same", activation="relu", input_shape=(224,224,3)))
+model.add(Conv2D(32,3,padding="same", activation="relu", input_shape=(75, 122, 3)))
 model.add(MaxPool2D())
 
 model.add(Conv2D(32, 3, padding="same", activation="relu"))
